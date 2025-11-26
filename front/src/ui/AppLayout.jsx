@@ -19,7 +19,7 @@ function AppLayout() {
             alt="DisneyLogo"
             className="mx-auto w-36 my-4"
           />
-          <div className="absolute right-6 flex top-3 text-white font-bold gap-8">
+          <div className="absolute right-6 flex top-4 text-white font-bold gap-8 text-nowrap">
             {isLoading ? <SpinnerMini /> : `${user?.data?.data?.name || "Usuario"}`}
             <Logout />
           </div>

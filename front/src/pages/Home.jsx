@@ -264,7 +264,7 @@ function Home() {
             }
           }}
           className={`${
-            addMode ? "bg-red-500 hover:bg-red-600" : "bg-green-600 hover:bg-green-700"
+            addMode ? "bg-blue-500 hover:bg-blue-600" : "bg-blue-600 hover:bg-blue-700"
           } text-white w-14 h-14 rounded-full shadow-xl flex items-center justify-center text-3xl transition-all transform hover:scale-105`}
         >
           {addMode ? "×" : "+"}
@@ -274,7 +274,7 @@ function Home() {
       {/* Add Mode Indicator */}
       {addMode && (
         <div className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-blue-900 text-white px-6 py-3 rounded-full shadow-xl z-[1000] font-bold animate-bounce">
-          📍 Haz click en el mapa para agregar {addMode === "restaurant" ? "restaurante" : "atracción"}
+           Haz click en el mapa para agregar {addMode === "restaurant" ? "restaurante" : "atracción"}
         </div>
       )}
     </div>

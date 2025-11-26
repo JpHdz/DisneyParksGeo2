@@ -19,7 +19,6 @@ import AppLayout from "./ui/AppLayout";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
-import AddPersonalInfo from "./pages/AddPersonalInfo";
 import RestaurantDetails from "./pages/RestaurantDetails";
 import AttractionDetails from "./pages/AttractionDetails";
 import RestaurantForm from "./pages/RestaurantForm";
@@ -99,8 +98,8 @@ function App() {
             style: {
               fontSize: "16px",
               maxWidth: "500px",
-              backgroundColor: "var(--white-main)",
-              color: "var(--grey-main)",
+              backgroundColor: "#fff",
+              color: "grey",
             },
           }}
         />
