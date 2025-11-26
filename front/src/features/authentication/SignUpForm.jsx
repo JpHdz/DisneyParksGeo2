@@ -4,7 +4,6 @@ import SpinnerMini from "../../ui/SpinnerMini";
 import { useSignup } from "./useSignup";
 
 function SignupForm() {
-  const [step, setStep] = useState(1);
   const {
     register,
     handleSubmit,
@@ -29,15 +28,11 @@ function SignupForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="overflow-hidden w-full text-sm"
+      className="overflow-hidden w-full text-sm "
     >
       <div
-        className="flex transition-transform duration-500 w-full"
-        style={{
-          transform: step === 1 ? "translateX(0%)" : "translateX(-100%)",
-        }}
+        className=" transition-transform duration-500 w-full flex flex-col gap-2"
       >
-        {/* Paso 1 */}
         <div className="w-full box-border">
           <div className="mb-5 flex flex-col">
             <label htmlFor="name" className="mb-3">
@@ -77,15 +72,8 @@ function SignupForm() {
               <p className="mt-2 text-red-700">{errors.email.message}</p>
             )}
           </div>
-          <button
-            type="button"
-            onClick={() => setStep(2)}
-            className="bg-blue-600 text-white py-2 px-6 rounded-xl w-full mt-4"
-          >
-            Continuar
-          </button>
+        
         </div>
-        {/* Paso 2 */}
         <div className="w-full box-border">
           <div className="mb-5 flex flex-col">
             <label htmlFor="password" className="mb-3">
@@ -129,7 +117,10 @@ function SignupForm() {
               </p>
             )}
           </div>
-          <div className="flex items-center mt-5">
+        </div>
+        <div>
+          
+          <div className="flex items-center mt-5 justify-self-center">
             <input
               type="checkbox"
               id="terms"
@@ -145,14 +136,7 @@ function SignupForm() {
           {errors.terms && (
             <p className="mt-2 text-red-700">{errors.terms.message}</p>
           )}
-          <div className="flex gap-2 mt-6">
-            <button
-              type="button"
-              onClick={() => setStep(1)}
-              className="bg-white text-blue-600 border border-blue-600 py-2 px-6 rounded-xl w-full"
-            >
-              Atrás
-            </button>
+          <div className="flex flex-col gap-2 mt-6">
             <button
               type="submit"
               disabled={isLoading}
@@ -160,8 +144,8 @@ function SignupForm() {
             >
               {isLoading ? <SpinnerMini /> : "Registrarse"}
             </button>
+              </div>
           </div>
-        </div>
       </div>
     </form>
   );

@@ -48,9 +48,8 @@ const restaurantSchema = new mongoose.Schema({
   ],
 });
 
-restaurantSchema.pre(/^find/, function (next) {
+restaurantSchema.pre(/^find/, function () {
   this.populate({ path: "dishes" }).populate({ path: "park" });
-  next();
 });
 
 const Restaurant = mongoose.model("Restaurant", restaurantSchema);

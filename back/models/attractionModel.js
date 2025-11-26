@@ -16,6 +16,18 @@ const attractionSchema = new mongoose.Schema({
     type: String,
     required: [true, "La atracción debe tener descripción"],
   },
+  waitTime: {
+    type: Number,
+    default: 0,
+  },
+  thrillLevel: {
+    type: String,
+    default: "Moderada",
+  },
+  minHeight: {
+    type: String,
+    default: "Sin restricción",
+  },
   coordinates: {
     lat: {
       type: Number,
@@ -38,9 +50,8 @@ const attractionSchema = new mongoose.Schema({
   ],
 });
 
-attractionSchema.pre(/^find/, function (next) {
+attractionSchema.pre(/^find/, function () {
   this.populate({ path: "park" });
-  next();
 });
 
 const Attraction = mongoose.model("Attraction", attractionSchema);

@@ -17,7 +17,7 @@ const parkSchema = new mongoose.Schema({
       required: [true, "El polígono debe ser tipo Polygon"],
     },
     coordinates: {
-      type: [[Number]], // Array de arrays de coordenadas [ [ [lng, lat], ... ] ]
+      type: [[[Number]]], // Array de arrays de coordenadas [ [ [lng, lat], ... ] ]
       required: [true, "Debes indicar las coordenadas del polígono"],
     },
   },

@@ -1,0 +1,29 @@
+Found 2 parks.
+Park: Magic Kingdom (692660d838012343614af69e)
+  Restaurants: 2
+    - Cosmic Ray's Starlight Café (Park ID in Restaurant: {
+  polygon: { type: 'Polygon', coordinates: [ [Array] ] },
+  _id: new ObjectId('692660d838012343614af69e'),
+  name: 'Magic Kingdom',
+  description: 'El parque temático original de Walt Disney World Resort, donde los cuentos de hadas se hacen realidad.',
+  photos: [],
+  __v: 0
+})
+    - Be Our Guest Restaurant (Park ID in Restaurant: {
+  polygon: { type: 'Polygon', coordinates: [ [Array] ] },
+  _id: new ObjectId('692660d838012343614af69e'),
+  name: 'Magic Kingdom',
+  description: 'El parque temático original de Walt Disney World Resort, donde los cuentos de hadas se hacen realidad.',
+  photos: [],
+  __v: 0
+})
+Park: EPCOT (692660d938012343614af6a1)
+  Restaurants: 1
+    - Le Cellier Steakhouse (Park ID in Restaurant: {
+  polygon: { type: 'Polygon', coordinates: [ [Array] ] },
+  _id: new ObjectId('692660d938012343614af6a1'),
+  name: 'EPCOT',
+  description: 'Celebra los logros humanos y la cultura internacional con tecnología innovadora.',
+  photos: [],
+  __v: 0
+})

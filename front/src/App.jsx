@@ -20,6 +20,13 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import AddPersonalInfo from "./pages/AddPersonalInfo";
+import RestaurantDetails from "./pages/RestaurantDetails";
+import AttractionDetails from "./pages/AttractionDetails";
+import RestaurantForm from "./pages/RestaurantForm";
+import AttractionForm from "./pages/AttractionForm";
+import DishForm from "./pages/DishForm";
+import ParkForm from "./pages/ParkForm";
+import ParkMapboxCreator from "./pages/ParkMapboxCreator";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -62,9 +69,18 @@ function App() {
               <Route element={<AppLayout />}>
                 <Route index element={<Navigate replace to="/home" />} />
                 <Route path="/home" element={<Home />} />
+                <Route path="/park/new" element={<ParkForm />} />
+                <Route path="/park/create-map" element={<ParkMapboxCreator />} />
+                <Route path="/restaurant/new" element={<RestaurantForm />} />
+                <Route path="/attraction/new" element={<AttractionForm />} />
+                <Route path="/dish/new" element={<DishForm />} />
+                <Route path="/dish/edit/:id" element={<DishForm />} />
+                <Route path="/restaurant/:id" element={<RestaurantDetails />} />
+                <Route path="/attraction/:id" element={<AttractionDetails />} />
+                <Route path="/restaurant/edit/:id" element={<RestaurantForm />} />
+                <Route path="/attraction/edit/:id" element={<AttractionForm />} />
               </Route>
 
-              <Route path="/add-personal-info" element={<AddPersonalInfo />} />
             </Route>
           </Routes>
         </BrowserRouter>

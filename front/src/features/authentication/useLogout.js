@@ -19,7 +19,7 @@ export function useLogout() {
       signOut();
       toast.success("Sesion Cerrada");
       dispatch(logoutSuccess());
-      navigate("/home");
+      navigate("/login");
     },
     onError: (error) => {
       console.log(error);

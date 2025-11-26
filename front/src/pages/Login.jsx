@@ -21,12 +21,10 @@ function Login() {
             </p>
           </div>
 
-          {/* Formulario envuelto en un estilo limpio */}
           <div className="backdrop-blur-sm">
             <LoginForm />
           </div>
 
-          {/* Link Alternativo */}
           <div className="mt-10 flex flex-col items-center justify-center gap-2 border-t border-slate-200 pt-6 text-[1rem] sm:flex-row">
             <span className="text-slate-500">¿Aún no tienes tu pase?</span>
             <Link
@@ -41,7 +39,6 @@ function Login() {
 
       {/* Columna Derecha con Imagen */}
       <div className="hidden lg:block lg:w-1/2 relative bg-blue-900 overflow-hidden">
-        {/* Overlay degradado para que el texto resalte y se sienta integrado */}
         <div className="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-900/40 to-transparent z-10"></div>
 
         <img
@@ -50,7 +47,6 @@ function Login() {
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-[10s] hover:scale-105"
         />
 
-        {/* Texto flotante sobre la imagen (opcional, estilo portada de película) */}
         <div className="absolute bottom-12 left-12 right-12 z-20 text-white">
           <h2 className="font-serif text-4xl font-bold mb-4">
             La aventura te espera.
