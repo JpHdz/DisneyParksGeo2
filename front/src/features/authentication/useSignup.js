@@ -24,7 +24,7 @@ export function useSignup() {
       });
       toast.success("Cuenta Creada Exitosamente!");
       dispatch(signupSuccess(user));
-      navigate("/add-personal-info");
+      navigate("/home");
     },
     onError: (error) => {
       console.log(error);
