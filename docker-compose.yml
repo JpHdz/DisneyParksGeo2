@@ -1,0 +1,22 @@
+services:
+  back:
+    build: ./back
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./back/.env
+    # Or define environment variables directly here:
+    # environment:
+    #   - PORT=3000
+    #   - DATABASE=...
+    #   - DB_PASSWORD=...
+
+  front:
+    build:
+      context: ./front
+      args:
+        - VITE_API_URL=http://<EC2_PUBLIC_IP_OR_DOMAIN>:3000
+    ports:
+      - "80:80"
+    depends_on:
+      - back

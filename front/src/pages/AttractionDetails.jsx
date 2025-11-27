@@ -8,7 +8,7 @@ function AttractionDetails() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/v1/attractions/${id}`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/v1/attractions/${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.status === "success") {
@@ -43,7 +43,7 @@ function AttractionDetails() {
         <img
           src={
             attraction.photos && attraction.photos.length > 0
-              ? `http://localhost:3000/${attraction.photos[0]}`
+              ? `${import.meta.env.VITE_API_URL}/${attraction.photos[0]}`
               : "https://images.unsplash.com/photo-1561582077-8d0706240019?q=80&w=2070&auto=format&fit=crop"
           }
           alt={attraction.name}

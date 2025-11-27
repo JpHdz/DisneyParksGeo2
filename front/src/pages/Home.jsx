@@ -64,7 +64,7 @@ function Home() {
   const [addMode, setAddMode] = useState(null); // 'restaurant' | 'attraction' | null
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/v1/parks")
+    fetch(`${import.meta.env.VITE_API_URL}/api/v1/parks`)
       .then((res) => res.json())
       .then((data) => {
         if (data.status === "success") {
@@ -79,8 +79,8 @@ function Home() {
     setLoading(true);
     try {
       const [resRestaurants, resAttractions] = await Promise.all([
-        fetch(`http://localhost:3000/api/v1/restaurants?park=${park._id}`),
-        fetch(`http://localhost:3000/api/v1/attractions?park=${park._id}`),
+        fetch(`${import.meta.env.VITE_API_URL}/api/v1/restaurants?park=${park._id}`),
+        fetch(`${import.meta.env.VITE_API_URL}/api/v1/attractions?park=${park._id}`),
       ]);
 
       const dataRestaurants = await resRestaurants.json();

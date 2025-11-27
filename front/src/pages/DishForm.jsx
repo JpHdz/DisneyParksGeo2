@@ -16,7 +16,7 @@ function DishForm() {
   useEffect(() => {
     // Fetch restaurants to populate dropdown (only needed for creation)
     if (!id) {
-      fetch("http://localhost:3000/api/v1/restaurants")
+      fetch(`${import.meta.env.VITE_API_URL}/api/v1/restaurants`)
         .then((res) => res.json())
         .then((data) => {
           if (data.status === "success") {
@@ -33,7 +33,7 @@ function DishForm() {
 
     // Fetch dish data if editing
     if (id) {
-      fetch(`http://localhost:3000/api/v1/dishes/${id}`)
+      fetch(`${import.meta.env.VITE_API_URL}/api/v1/dishes/${id}`)
         .then((res) => res.json())
         .then((data) => {
           if (data.status === "success") {
@@ -64,8 +64,8 @@ function DishForm() {
     }
 
     const url = id 
-      ? `http://localhost:3000/api/v1/dishes/${id}`
-      : "http://localhost:3000/api/v1/dishes";
+      ? `${import.meta.env.VITE_API_URL}/api/v1/dishes/${id}`
+      : `${import.meta.env.VITE_API_URL}/api/v1/dishes`;
     const method = id ? "PATCH" : "POST";
 
     try {
@@ -84,12 +84,12 @@ function DishForm() {
         if (!id) {
           // If creating, link to restaurant
           const newDishId = dataDish.data.data._id;
-          const resRest = await fetch(`http://localhost:3000/api/v1/restaurants/${formData.restaurantId}`);
+          const resRest = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/restaurants/${formData.restaurantId}`);
           const dataRest = await resRest.json();
           const currentDishes = dataRest.data.data.dishes.map(d => d._id);
           const updatedDishes = [...currentDishes, newDishId];
 
-          const resUpdate = await fetch(`http://localhost:3000/api/v1/restaurants/${formData.restaurantId}`, {
+          const resUpdate = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/restaurants/${formData.restaurantId}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ dishes: updatedDishes }),
@@ -118,7 +118,7 @@ function DishForm() {
     if (!id) return;
     if (window.confirm("¿Estás seguro de que quieres eliminar este platillo?")) {
       try {
-        const res = await fetch(`http://localhost:3000/api/v1/dishes/${id}`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/dishes/${id}`, {
           method: "DELETE",
         });
         if (res.ok) {

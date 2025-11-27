@@ -11,7 +11,7 @@ function RestaurantDetails() {
   const handleDeleteDish = async (dishId) => {
     if (window.confirm("¿Estás seguro de que quieres eliminar este platillo?")) {
       try {
-        const res = await fetch(`http://localhost:3000/api/v1/dishes/${dishId}`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/dishes/${dishId}`, {
           method: "DELETE",
         });
         if (res.ok) {
@@ -31,7 +31,7 @@ function RestaurantDetails() {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:3000/api/v1/restaurants/${id}`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/v1/restaurants/${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.status === "success") {
@@ -66,7 +66,7 @@ function RestaurantDetails() {
         <img
           src={
             restaurant.photos && restaurant.photos.length > 0
-              ? `http://localhost:3000/${restaurant.photos[0]}`
+              ? `${import.meta.env.VITE_API_URL}/${restaurant.photos[0]}`
               : "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1974&auto=format&fit=crop"
           }
           alt={restaurant.name}

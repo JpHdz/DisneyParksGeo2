@@ -22,7 +22,7 @@ function RestaurantForm() {
 
   useEffect(() => {
     // Fetch parks for dropdown
-    fetch("http://localhost:3000/api/v1/parks")
+    fetch(`${import.meta.env.VITE_API_URL}/api/v1/parks`)
       .then((res) => res.json())
       .then((data) => {
         if (data.status === "success") {
@@ -31,7 +31,7 @@ function RestaurantForm() {
       });
 
     if (id) {
-      fetch(`http://localhost:3000/api/v1/restaurants/${id}`)
+      fetch(`${import.meta.env.VITE_API_URL}/api/v1/restaurants/${id}`)
         .then((res) => res.json())
         .then((data) => {
           if (data.status === "success") {
@@ -80,8 +80,8 @@ function RestaurantForm() {
     e.preventDefault();
     const isEdit = !!id;
     const url = isEdit 
-      ? `http://localhost:3000/api/v1/restaurants/${id}`
-      : "http://localhost:3000/api/v1/restaurants";
+      ? `${import.meta.env.VITE_API_URL}/api/v1/restaurants/${id}`
+      : `${import.meta.env.VITE_API_URL}/api/v1/restaurants`;
     const method = isEdit ? "PATCH" : "POST";
 
     try {
@@ -102,7 +102,7 @@ function RestaurantForm() {
           const photoFormData = new FormData();
           photoFormData.append("photos", photo);
           
-          const resPhoto = await fetch(`http://localhost:3000/api/v1/restaurants/${restaurantId}/photos`, {
+          const resPhoto = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/restaurants/${restaurantId}/photos`, {
             method: "POST",
             body: photoFormData,
           });
@@ -126,7 +126,7 @@ function RestaurantForm() {
   const handleDelete = async () => {
     if (window.confirm("¿Estás seguro de que quieres eliminar este restaurante?")) {
       try {
-        const res = await fetch(`http://localhost:3000/api/v1/restaurants/${id}`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/restaurants/${id}`, {
           method: "DELETE",
         });
         if (res.status === 204) {

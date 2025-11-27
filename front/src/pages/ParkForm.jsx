@@ -47,7 +47,7 @@ function ParkForm() {
     };
 
     try {
-      const res = await fetch("http://localhost:3000/api/v1/parks", {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/parks`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

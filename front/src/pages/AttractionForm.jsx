@@ -24,7 +24,7 @@ function AttractionForm() {
 
   useEffect(() => {
     // Fetch parks
-    fetch("http://localhost:3000/api/v1/parks")
+    fetch(`${import.meta.env.VITE_API_URL}/api/v1/parks`)
       .then((res) => res.json())
       .then((data) => {
         if (data.status === "success") {
@@ -33,7 +33,7 @@ function AttractionForm() {
       });
 
     if (id) {
-      fetch(`http://localhost:3000/api/v1/attractions/${id}`)
+      fetch(`${import.meta.env.VITE_API_URL}/api/v1/attractions/${id}`)
         .then((res) => res.json())
         .then((data) => {
           if (data.status === "success") {
@@ -84,8 +84,8 @@ function AttractionForm() {
     e.preventDefault();
     const isEdit = !!id;
     const url = isEdit 
-      ? `http://localhost:3000/api/v1/attractions/${id}`
-      : "http://localhost:3000/api/v1/attractions";
+      ? `${import.meta.env.VITE_API_URL}/api/v1/attractions/${id}`
+      : `${import.meta.env.VITE_API_URL}/api/v1/attractions`;
     const method = isEdit ? "PATCH" : "POST";
 
     try {
@@ -106,7 +106,7 @@ function AttractionForm() {
           const photoFormData = new FormData();
           photoFormData.append("photos", photo);
           
-          const resPhoto = await fetch(`http://localhost:3000/api/v1/attractions/${attractionId}/photos`, {
+          const resPhoto = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/attractions/${attractionId}/photos`, {
             method: "POST",
             body: photoFormData,
           });
@@ -131,7 +131,7 @@ function AttractionForm() {
     if (!id) return; // Cannot delete if creating
     if (window.confirm("¿Estás seguro de que quieres eliminar esta atracción?")) {
       try {
-        const res = await fetch(`http://localhost:3000/api/v1/attractions/${id}`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/attractions/${id}`, {
           method: "DELETE",
         });
         if (res.status === 204) {

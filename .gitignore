@@ -25,3 +25,6 @@ front/build/
 front/.eslintcache
 front/node_modules/
 front/.env
+
+
+DEPLOY_GUIDE.md
