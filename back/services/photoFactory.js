@@ -2,10 +2,16 @@ const multer = require("multer");
 const AppError = require("../utils/appError");
 const catchAsync = require("../utils/catchAsync");
 
+const fs = require("fs");
+
 // Configuración básica de multer para subir imágenes
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/"); // Carpeta local para imágenes
+    const dir = "uploads/";
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir);
+    }
+    cb(null, dir); // Carpeta local para imágenes
   },
   filename: (req, file, cb) => {
     const ext = file.mimetype.split("/")[1];
