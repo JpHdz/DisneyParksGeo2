@@ -42,8 +42,8 @@ function AttractionDetails() {
       <div className="relative h-96 w-full bg-blue-900 overflow-hidden">
         <img
           src={
-            attraction.photos && attraction.photos.length > 0
-              ? `${import.meta.env.VITE_API_URL}/${attraction.photos[0]}`
+            attraction.photo
+              ? `${import.meta.env.VITE_API_URL}/${attraction.photo}`
               : "https://images.unsplash.com/photo-1561582077-8d0706240019?q=80&w=2070&auto=format&fit=crop"
           }
           alt={attraction.name}

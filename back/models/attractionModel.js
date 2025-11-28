@@ -43,11 +43,10 @@ const attractionSchema = new mongoose.Schema({
     ref: "Park",
     required: true,
   },
-  photos: [
-    {
-      type: String,
-    },
-  ],
+  photo: {
+    type: String,
+    default: "default.jpg",
+  },
 });
 
 attractionSchema.pre(/^find/, function () {

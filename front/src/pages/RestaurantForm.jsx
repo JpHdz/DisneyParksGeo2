@@ -100,7 +100,7 @@ function RestaurantForm() {
         // Upload photo if selected
         if (photo) {
           const photoFormData = new FormData();
-          photoFormData.append("photos", photo);
+          photoFormData.append("photo", photo);
           
           const resPhoto = await fetch(`${import.meta.env.VITE_API_URL}/api/v1/restaurants/${restaurantId}/photos`, {
             method: "POST",

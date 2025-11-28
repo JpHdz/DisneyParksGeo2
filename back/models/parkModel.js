@@ -21,11 +21,10 @@ const parkSchema = new mongoose.Schema({
       required: [true, "Debes indicar las coordenadas del polígono"],
     },
   },
-  photos: [
-    {
-      type: String,
-    },
-  ],
+  photo: {
+    type: String,
+    default: "default.jpg",
+  },
 });
 
 const Park = mongoose.model("Park", parkSchema);

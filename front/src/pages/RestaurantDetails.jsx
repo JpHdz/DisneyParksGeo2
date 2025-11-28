@@ -65,8 +65,8 @@ function RestaurantDetails() {
       <div className="relative h-96 w-full bg-blue-900 overflow-hidden">
         <img
           src={
-            restaurant.photos && restaurant.photos.length > 0
-              ? `${import.meta.env.VITE_API_URL}/${restaurant.photos[0]}`
+            restaurant.photo
+              ? `${import.meta.env.VITE_API_URL}/${restaurant.photo}`
               : "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1974&auto=format&fit=crop"
           }
           alt={restaurant.name}

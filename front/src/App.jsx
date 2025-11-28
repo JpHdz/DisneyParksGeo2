@@ -10,7 +10,7 @@ import {
 } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
-// V3 IMPORTS:
+
 import AuthProvider from "react-auth-kit";
 import createStore from "react-auth-kit/createStore";
 import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
@@ -35,7 +35,7 @@ const queryClient = new QueryClient({
   },
 });
 
-// 1. CONFIGURACIÓN DEL STORE (Obligatorio en v3)
+// 1. CONFIGURACIÓN DEL STORE 
 const store = createStore({
   authName: "_auth",
   authType: "cookie",
@@ -46,7 +46,6 @@ const store = createStore({
 // 2. COMPONENTE PARA PROTEGER RUTAS (Manual, para evitar errores de AuthOutlet)
 const PrivateRoutes = () => {
   const isAuthenticated = useIsAuthenticated();
-  // FIX: En v3, isAuthenticated es un booleano, NO una función. Quitamos los paréntesis ().
   return isAuthenticated ? <Outlet /> : <Navigate to="/login" replace />;
 };
 

@@ -41,11 +41,10 @@ const restaurantSchema = new mongoose.Schema({
     ref: "Park",
     required: true,
   },
-  photos: [
-    {
-      type: String,
-    },
-  ],
+  photo: {
+    type: String,
+    default: "default.jpg",
+  },
 });
 
 restaurantSchema.pre(/^find/, function () {

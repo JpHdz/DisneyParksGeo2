@@ -30,17 +30,21 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({ storage, fileFilter });
 
 // Factory para subir, editar y eliminar imágenes en cualquier modelo
+// Factory para subir, editar y eliminar imágenes en cualquier modelo
 exports.uploadPhoto = (Model) => [
-  upload.array("photos", 5),
+  upload.single("photo"),
   catchAsync(async (req, res, next) => {
     const doc = await Model.findById(req.params.id);
     if (!doc) return next(new AppError("No se encontró el documento", 404));
-    const photoPaths = req.files.map((file) => file.path);
-    doc.photos = doc.photos.concat(photoPaths);
-    await doc.save();
+    
+    if (req.file) {
+      doc.photo = req.file.path;
+      await doc.save();
+    }
+
     res.status(200).json({
       status: "success",
-      data: { photos: doc.photos },
+      data: { photo: doc.photo },
     });
   }),
 ];
@@ -49,23 +53,31 @@ exports.deletePhoto = (Model) =>
   catchAsync(async (req, res, next) => {
     const doc = await Model.findById(req.params.id);
     if (!doc) return next(new AppError("No se encontró el documento", 404));
-    const { photo } = req.body;
-    doc.photos = doc.photos.filter((p) => p !== photo);
+    
+    doc.photo = "default.jpg"; // O null, dependiendo de la lógica deseada
     await doc.save();
+
     res.status(200).json({
       status: "success",
-      data: { photos: doc.photos },
+      data: { photo: doc.photo },
     });
   });
 
 exports.editPhotos = (Model) =>
   catchAsync(async (req, res, next) => {
+    // Esta función podría ser redundante si uploadPhoto maneja la actualización
+    // Pero la mantenemos por compatibilidad de rutas si es necesario, 
+    // aunque idealmente se debería usar uploadPhoto para todo cambio de imagen.
     const doc = await Model.findById(req.params.id);
     if (!doc) return next(new AppError("No se encontró el documento", 404));
-    doc.photos = req.body.photos;
-    await doc.save();
+    
+    if (req.body.photo) {
+        doc.photo = req.body.photo;
+        await doc.save();
+    }
+    
     res.status(200).json({
       status: "success",
-      data: { photos: doc.photos },
+      data: { photo: doc.photo },
     });
   });
