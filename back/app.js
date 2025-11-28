@@ -12,7 +12,7 @@ const attractionRouter = require("./routes/attractionRoutes");
 const parkRouter = require("./routes/parkRoutes");
 const photoRouter = require("./routes/photoRoutes");
 
-const allowedOrigin = "http://localhost:5173";
+const allowedOrigin = process.env.FRONTEND_URL || "http://localhost:5173";
 
 const app = express();
 

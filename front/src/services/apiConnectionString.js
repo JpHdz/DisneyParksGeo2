@@ -1,3 +1,3 @@
-const apiConnectionString = "http://127.0.0.1:3000/api/v1";
+const apiConnectionString = `${import.meta.env.VITE_API_URL}/api/v1`;
 
 export default apiConnectionString;
