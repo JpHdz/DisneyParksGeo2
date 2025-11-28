@@ -84,7 +84,7 @@ function ParkMapboxCreator() {
         )}
       </Map>
 
-      <div className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-white p-4 rounded-xl shadow-2xl z-10 flex flex-col items-center gap-2">
+      <div className="absolute top-24 left-1/2 transform -translate-x-1/2 bg-white p-4 rounded-xl shadow-2xl z-10 flex flex-col items-center gap-2">
         <p className="font-bold text-gray-800">Dibujando Parque (Mapbox)</p>
         <p className="text-sm text-gray-600">Puntos: {points.length}</p>
         <div className="flex gap-2">

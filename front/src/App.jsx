@@ -35,7 +35,7 @@ const queryClient = new QueryClient({
   },
 });
 
-// 1. CONFIGURACIÓN DEL STORE 
+// CONFIGURACIÓN DEL STORE 
 const store = createStore({
   authName: "_auth",
   authType: "cookie",
@@ -43,7 +43,7 @@ const store = createStore({
   cookieSecure: false,
 });
 
-// 2. COMPONENTE PARA PROTEGER RUTAS (Manual, para evitar errores de AuthOutlet)
+// COMPONENTE PARA PROTEGER RUTAS (Manual, para evitar errores de AuthOutlet)
 const PrivateRoutes = () => {
   const isAuthenticated = useIsAuthenticated();
   return isAuthenticated ? <Outlet /> : <Navigate to="/login" replace />;
@@ -52,7 +52,6 @@ const PrivateRoutes = () => {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      {/* 3. PASAMOS EL STORE AL PROVIDER (Sintaxis v3) */}
       <AuthProvider store={store}>
         <ReactQueryDevtools initialIsOpen={false} />
 

@@ -163,6 +163,21 @@ function RestaurantDetails() {
               )}
             </div>
           </div>
+
+          {/* YouTube Video Section */}
+          <div className="mt-12 mb-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6">Te podria interesar</h3>
+            <div className="aspect-w-16 aspect-h-9 w-full rounded-xl overflow-hidden shadow-lg">
+              <iframe 
+                className="w-full h-[500px]"
+                src="https://www.youtube.com/embed/BTnohw6ZQsY?start=787" 
+                title="YouTube video player" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
         </div>
       </div>
     </div>
