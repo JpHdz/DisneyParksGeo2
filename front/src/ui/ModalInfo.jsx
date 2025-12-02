@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function ModalInfo({
@@ -10,14 +11,38 @@ function ModalInfo({
   onItemClick,
 }) {
   const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    setSearchQuery("");
+  }, [selectedPark]);
+
+  const filteredParks = parks.filter((park) =>
+    park.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const filteredRestaurants = details?.restaurants?.filter((restaurant) =>
+    restaurant.name.toLowerCase().includes(searchQuery.toLowerCase())
+  ) || [];
+
+  const filteredAttractions = details?.attractions?.filter((attraction) =>
+    attraction.name.toLowerCase().includes(searchQuery.toLowerCase())
+  ) || [];
 
   return (
     <div className="absolute top-0 pt-20 left-0 h-full w-1/3 bg-white shadow-lg  overflow-y-auto p-4">
       {!selectedPark ? (
         <>
           <h2 className="text-2xl font-bold mb-4 text-gray-800">Parques</h2>
+          <input
+            type="text"
+            placeholder="Buscar parques..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full p-2 mb-4 border rounded border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
           <div className="space-y-4">
-            {parks.map((park) => (
+            {filteredParks.map((park) => (
               <div
                 key={park._id}
                 onClick={() => onParkSelect(park)}
@@ -49,13 +74,20 @@ function ModalInfo({
             <div className="text-center py-4">Cargando detalles...</div>
           ) : (
             <>
+              <input
+                type="text"
+                placeholder="Buscar atracciones o restaurantes..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full p-2 mb-6 border rounded border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
               <div className="mb-8">
                 <h3 className="text-xl font-bold text-gray-800 mb-3 border-b pb-2">
                   Restaurantes
                 </h3>
-                {details.restaurants.length > 0 ? (
+                {filteredRestaurants.length > 0 ? (
                   <div className="space-y-3">
-                    {details.restaurants.map((restaurant) => (
+                    {filteredRestaurants.map((restaurant) => (
                       <div
                         key={restaurant._id}
                         className="bg-gray-50 p-3 rounded hover:bg-gray-100 transition-colors"
@@ -100,9 +132,9 @@ function ModalInfo({
                 <h3 className="text-xl font-bold text-gray-800 mb-3 border-b pb-2">
                   Atracciones
                 </h3>
-                {details.attractions.length > 0 ? (
+                {filteredAttractions.length > 0 ? (
                   <div className="space-y-3">
-                    {details.attractions.map((attraction) => (
+                    {filteredAttractions.map((attraction) => (
                       <div
                         key={attraction._id}
                         className="bg-gray-50 p-3 rounded hover:bg-gray-100 transition-colors"
